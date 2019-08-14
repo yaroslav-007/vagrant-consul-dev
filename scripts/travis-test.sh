@@ -1,6 +1,7 @@
 
 #!/usr/bin/env bash
 
+
 # Check if consul member is alive
 if [ $? == 0 ];then
   echo "GOOD: consul is up"
@@ -9,8 +10,6 @@ else
   exit 1
 fi
 
-echo test
-curl -I -s http://127.0.0.1:8500/ui/
 
 out=$(curl -I -s http://localhost:8500/ui/ | grep "HTTP/1.1 200 OK")
 
