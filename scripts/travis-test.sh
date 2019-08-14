@@ -9,6 +9,9 @@ else
   exit 1
 fi
 
+echo test
+curl -I -s http://127.0.0.1:8500/ui/
+
 out=$(curl -I -s http://localhost:8500/ui/ | grep "HTTP/1.1 200 OK")
 
 # Check if web page is accesible 
