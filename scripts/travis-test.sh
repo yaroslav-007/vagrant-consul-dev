@@ -3,7 +3,7 @@
 
 
 # Check if consul member is alive
-out=$(consul members | awk '{print $3}' | grep  alive)
+consul members | awk '{print $3}' | grep  alive
 
 if [ $? == 0 ];then
   echo "GOOD: consul is up"
@@ -13,7 +13,7 @@ else
 fi
 
 # Check if web page is accesible
-out=$(curl -I -s http://localhost:8500/ui/ | grep "HTTP/1.1 200 OK")
+curl -I -s http://localhost:8500/ui/ | grep "HTTP/1.1 200 OK"
 
 if [ $? == 0 ];then
   echo "GOOD: web page is accessible"
