@@ -1,6 +1,6 @@
 
 #!/usr/bin/env bash
-
+set -x
 
 # Check if consul member is alive
 /usr/local/bin/consul members | awk '{print $3}' | grep  alive
