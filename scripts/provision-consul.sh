@@ -5,7 +5,7 @@ set -x
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 #apt-get upgrade -y
-apt-get install wget unzip jq zip -y
+apt-get install wget unzip jq zip curl -y
 
 ###Download latest consul
 wget $(curl -s https://www.consul.io/downloads.html | grep linux_amd64.zip | sed  's/.*\(https.*zip\).*/\1/') -O /tmp/consul.zip
