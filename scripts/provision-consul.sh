@@ -35,7 +35,7 @@ mkdir /etc/consul.d
 
 
 chown --recursive consul:consul /etc/consul.d
-chmod 640 /etc/consul.d/config.hcl
+
 systemctl enable consul
 
 
