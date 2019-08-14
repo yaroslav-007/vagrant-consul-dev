@@ -11,3 +11,4 @@ sudo systemctl start consul
 ###Wait to service to power on in order for the next scripts to run successfuly
 sleep 20
 sudo systemctl status consul
+sudo journalctl -u consul
