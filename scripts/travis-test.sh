@@ -1,9 +1,9 @@
 
 #!/usr/bin/env bash
-set -x
+
 
 # Check if consul member is alive
-gitconsul members  | awk '{print $3}' | grep  alive
+consul members  | awk '{print $3}' | grep  alive
 
 if [ $? == 0 ];then
   echo "GOOD: consul is up"
