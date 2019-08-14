@@ -3,7 +3,7 @@
 
 
 # Check if consul member is alive
-consul members | awk '{print $3}' | grep  alive
+/usr/local/bin/consul members | awk '{print $3}' | grep  alive
 
 if [ $? == 0 ];then
   echo "GOOD: consul is up"
