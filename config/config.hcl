@@ -9,3 +9,4 @@ performance {
   raft_multiplier = 1
 }
 client_addr = "0.0.0.0"
+bind_addr = "127.0.0.1"
