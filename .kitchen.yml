@@ -19,7 +19,6 @@ platforms:
       provision: true
       vagrantfiles:
         - ./test/vagrant-server.rb
-
   - name: consul-server-2
     driver:
       box: ubuntu/bionic64
