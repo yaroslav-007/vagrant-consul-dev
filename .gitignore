@@ -1,0 +1,7 @@
+.vagrant/
+back-ups/
+keys.zip
+*.log
+terraform
+Gemfile.lock
+.kitchen/

@@ -1,0 +1,78 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: shell
+
+platforms:
+
+
+  - name: consul-server-2
+    driver:
+      box: ubuntu/bionic64
+      provider: virtualbox
+      synced_folders:
+      - ["./", "/vagrant"]
+      vm_hostname: consul-server-2
+      network:
+      - ["private_network", {ip: "192.168.50.5"}]
+      provision: true
+      vagrantfiles:
+        - ./test/vagrant-server.rb
+  - name: consul-server-3
+    driver:
+      box: ubuntu/bionic64
+      provider: virtualbox
+      synced_folders:
+      - ["./", "/vagrant"]
+      vm_hostname: consul-server-3
+      network:
+      - ["private_network", {ip: "192.168.50.6"}]
+      provision: true
+      vagrantfiles:
+        - ./test/vagrant-server.rb
+
+  - name: consul-client-1
+    driver:
+      box: ubuntu/bionic64
+      provider: virtualbox
+      synced_folders:
+      - ["./", "/vagrant"]
+      vm_hostname: consul-client-1
+      network:
+      - ["private_network", {ip: "192.168.50.10"}]
+      provision: true
+      vagrantfiles:
+        - ./test/vagrant-client.rb
+
+  - name: consul-client-2
+    driver:
+      box: ubuntu/bionic64
+      provider: virtualbox
+      synced_folders:
+      - ["./", "/vagrant"]
+      vm_hostname: consul-client-2
+      network:
+      - ["private_network", {ip: "192.168.50.11"}]
+      provision: true
+      vagrantfiles:
+        - ./test/vagrant-client.rb
+  - name: consul-server-1
+    driver:
+      box: ubuntu/bionic64
+      provider: virtualbox
+      synced_folders:
+      - ["./", "/vagrant"]
+      vm_hostname: consul-server-1
+      network:
+      - ["private_network", {ip: "192.168.50.4"}]
+      - ["forwarded_port", {guest: 8501, host: 8501}]
+      provision: true
+      vagrantfiles:
+        - ./test/vagrant-server.rb
+verifier:
+  name: inspec
+
+suites:
+  - name: default
