@@ -1,16 +1,8 @@
 #!/usr/bin/env bash
-
-
-
-export DEBIAN_FRONTEND=noninteractive
-apt-get update
-#apt-get upgrade -y
-apt-get install wget unzip jq zip  -y
+set -x
 
 ###Download latest consul
 wget $(curl -s https://www.consul.io/downloads.html | grep linux_amd64.zip | sed  's/.*\(https.*zip\).*/\1/') -O /tmp/consul.zip
-
-
 
 ###install consul
 unzip /tmp/consul.zip -d /tmp
@@ -31,12 +23,10 @@ sudo chown consul:consul /var/log/consul
 
 ###Creating Consul service file:
 sudo cp ./config/consul.service  /etc/systemd/system/consul.service
-mkdir /etc/consul.d
 
-
+###Creating  Directory for TLS keys
+mkdir -p /etc/consul.d/keys
 chown --recursive consul:consul /etc/consul.d
 
+###Enabling the consul service
 systemctl enable consul
-
-
-set +x
